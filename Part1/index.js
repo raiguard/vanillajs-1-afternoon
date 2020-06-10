@@ -1,6 +1,7 @@
 let board = [];
 let currentPlayer = "X";
 let gameFinished = false;
+let turns = 0;
 
 const winningCombinations = [
   [0, 1, 2],
@@ -22,8 +23,11 @@ function play(index) {
     document.getElementById(index).innerText = currentPlayer;
     board[index] = currentPlayer;
 
+    // increment turns counter
+    turns++;
+
     // check for full board
-    if (board.length === 9) {
+    if (turns >= 9) {
       playerIndicator.innerText = "It's a draw!";
     } else {
       // check win conditions
@@ -66,6 +70,7 @@ function reset() {
   board = [];
   currentPlayer = "X";
   gameFinished = false;
+  turns = 0;
 
   // reset board
   for (let i = 0; i < 9; i++) {
